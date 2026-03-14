@@ -1,0 +1,27 @@
+{
+  "doc_key": "execution_milestone",
+  "doc_title": "Execution Milestone",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "strategic_execution",
+  "submodule_id": "execution_tracking",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "strategic_execution",
+    "submodule": "execution_tracking",
+    "reference_doc_id": "execution_milestone",
+    "evidence_gaps": [
+      "dependency rules",
+      "milestone weighting"
+    ]
+  }
+}

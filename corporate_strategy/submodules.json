@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "growth_programs",
+    "portfolio_strategy"
+  ]
+}

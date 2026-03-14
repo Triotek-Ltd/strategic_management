@@ -1,0 +1,27 @@
+{
+  "doc_key": "competitive_observation",
+  "doc_title": "Competitive Observation",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "competitive_analysis",
+  "submodule_id": "competitor_tracking",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "competitive_analysis",
+    "submodule": "competitor_tracking",
+    "reference_doc_id": "competitive_observation",
+    "evidence_gaps": [
+      "observation-source standards",
+      "significance rubric"
+    ]
+  }
+}

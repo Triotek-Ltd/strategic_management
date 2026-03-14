@@ -1,0 +1,27 @@
+{
+  "doc_key": "strategic_goal",
+  "doc_title": "Strategic Goal",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "strategic_planning",
+  "submodule_id": "strategy_documents",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "strategic_planning",
+    "submodule": "strategy_documents",
+    "reference_doc_id": "strategic_goal",
+    "evidence_gaps": [
+      "goal scoring model",
+      "owner/accountability rules"
+    ]
+  }
+}

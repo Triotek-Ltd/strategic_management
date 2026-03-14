@@ -1,0 +1,27 @@
+{
+  "doc_key": "execution_issue_case",
+  "doc_title": "Execution Issue Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "strategic_execution",
+  "submodule_id": "strategy_governance",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "strategic_execution",
+    "submodule": "strategy_governance",
+    "reference_doc_id": "execution_issue_case",
+    "evidence_gaps": [
+      "mitigation tracking",
+      "escalation-to-governance rules"
+    ]
+  }
+}

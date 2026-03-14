@@ -1,0 +1,27 @@
+{
+  "doc_key": "corporate_strategy_record",
+  "doc_title": "Corporate Strategy Record",
+  "doc_kind": "configuration",
+  "status": "draft",
+  "module_id": "corporate_strategy",
+  "submodule_id": "portfolio_strategy",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "configuration",
+  "classification": {
+    "archetype": "configuration",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "corporate_strategy",
+    "submodule": "portfolio_strategy",
+    "reference_doc_id": "corporate_strategy_record",
+    "evidence_gaps": [
+      "scope boundaries between plan",
+      "corporate strategy layers"
+    ]
+  }
+}

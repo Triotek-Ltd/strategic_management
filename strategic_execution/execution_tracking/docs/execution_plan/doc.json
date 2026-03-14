@@ -1,0 +1,27 @@
+{
+  "doc_key": "execution_plan",
+  "doc_title": "Execution Plan",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "strategic_execution",
+  "submodule_id": "execution_tracking",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "strategic_execution",
+    "submodule": "execution_tracking",
+    "reference_doc_id": "execution_plan",
+    "evidence_gaps": [
+      "execution-plan hierarchy",
+      "plan-to-budget linkage"
+    ]
+  }
+}

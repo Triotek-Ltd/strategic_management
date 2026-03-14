@@ -1,0 +1,27 @@
+{
+  "doc_key": "strategy_status_report",
+  "doc_title": "Strategy Status Report",
+  "doc_kind": "ledger",
+  "status": "draft",
+  "module_id": "strategic_execution",
+  "submodule_id": "strategy_governance",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "ledger",
+  "classification": {
+    "archetype": "ledger",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "strategic_execution",
+    "submodule": "strategy_governance",
+    "reference_doc_id": "strategy_status_report",
+    "evidence_gaps": [
+      "report dimensions",
+      "status aggregation rules"
+    ]
+  }
+}

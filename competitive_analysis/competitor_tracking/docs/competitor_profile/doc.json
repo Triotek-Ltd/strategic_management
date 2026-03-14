@@ -1,0 +1,27 @@
+{
+  "doc_key": "competitor_profile",
+  "doc_title": "Competitor Profile",
+  "doc_kind": "master",
+  "status": "draft",
+  "module_id": "competitive_analysis",
+  "submodule_id": "competitor_tracking",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "master",
+  "classification": {
+    "archetype": "master",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "competitive_analysis",
+    "submodule": "competitor_tracking",
+    "reference_doc_id": "competitor_profile",
+    "evidence_gaps": [
+      "competitor classification model",
+      "monitoring responsibility"
+    ]
+  }
+}

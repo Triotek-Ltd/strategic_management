@@ -1,0 +1,28 @@
+{
+  "doc_key": "growth_initiative",
+  "doc_title": "Growth Initiative",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "corporate_strategy",
+  "submodule_id": "growth_programs",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "corporate_strategy",
+    "submodule": "growth_programs",
+    "reference_doc_id": "growth_initiative",
+    "evidence_gaps": [
+      "initiative gating",
+      "funding",
+      "portfolio-balancing rules"
+    ]
+  }
+}

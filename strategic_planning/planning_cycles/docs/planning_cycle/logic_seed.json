@@ -1,0 +1,105 @@
+{
+  "doc_id": "planning_cycle",
+  "doc_title": "Planning Cycle",
+  "archetype": "event",
+  "doc_kind": "event",
+  "actions": [
+    "create",
+    "update",
+    "activate",
+    "close",
+    "archive"
+  ],
+  "lifecycle": {
+    "initial_state": "planned",
+    "states": [
+      "planned",
+      "active",
+      "closed",
+      "archived"
+    ],
+    "terminal_states": [
+      "closed",
+      "archived"
+    ]
+  },
+  "related_doc_count": 2,
+  "fetch_rule_count": 0,
+  "action_handler_count": 5,
+  "archetype_profile": {
+    "workflow_profile": {
+      "mode": "event_schedule",
+      "supports_timing": true
+    },
+    "reporting_profile": {
+      "supports_snapshots": true,
+      "supports_outputs": false
+    },
+    "integration_profile": {
+      "external_sync_enabled": false
+    },
+    "lifecycle_states": [
+      "planned",
+      "active",
+      "closed",
+      "archived"
+    ],
+    "is_transactional": false
+  },
+  "contract_summary": {
+    "title_field": "title",
+    "status_field": "workflow_state",
+    "reference_field": "reference_no",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "field_purposes": {
+      "workflow_state": "lifecycle_state",
+      "start_at": "event_start",
+      "end_at": "event_end",
+      "start_date": "schedule_marker",
+      "end_date": "schedule_marker"
+    },
+    "search_fields": [
+      "title",
+      "reference_no",
+      "description",
+      "cycle_code",
+      "start_date",
+      "end_date"
+    ],
+    "list_columns": [
+      "title",
+      "start_at",
+      "end_at",
+      "workflow_state"
+    ],
+    "initial_state": "planned",
+    "lifecycle_states": [
+      "planned",
+      "active",
+      "closed",
+      "archived"
+    ],
+    "terminal_states": [
+      "closed",
+      "archived"
+    ],
+    "action_targets": {
+      "create": null,
+      "update": null,
+      "activate": "active",
+      "close": "closed",
+      "archive": "archived"
+    }
+  },
+  "workflow_hints": {},
+  "related_docs": [
+    "strategic_plan",
+    "strategic_goal"
+  ],
+  "borrowed_fields": [
+    "strategic horizon defaults from strategic_plan"
+  ]
+}

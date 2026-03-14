@@ -1,0 +1,27 @@
+{
+  "doc_key": "planning_cycle",
+  "doc_title": "Planning Cycle",
+  "doc_kind": "event",
+  "status": "draft",
+  "module_id": "strategic_planning",
+  "submodule_id": "planning_cycles",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "event",
+  "classification": {
+    "archetype": "event",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "strategic_planning",
+    "submodule": "planning_cycles",
+    "reference_doc_id": "planning_cycle",
+    "evidence_gaps": [
+      "exact review cadence",
+      "checkpoint semantics"
+    ]
+  }
+}

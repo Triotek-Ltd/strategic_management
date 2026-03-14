@@ -1,0 +1,27 @@
+{
+  "doc_key": "initiative_portfolio",
+  "doc_title": "Initiative Portfolio",
+  "doc_kind": "transaction",
+  "status": "draft",
+  "module_id": "strategic_planning",
+  "submodule_id": "planning_cycles",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "transaction",
+  "classification": {
+    "archetype": "transaction",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "strategic_planning",
+    "submodule": "planning_cycles",
+    "reference_doc_id": "initiative_portfolio",
+    "evidence_gaps": [
+      "investment criteria",
+      "initiative grouping rules"
+    ]
+  }
+}

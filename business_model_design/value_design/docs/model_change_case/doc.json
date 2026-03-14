@@ -1,0 +1,27 @@
+{
+  "doc_key": "model_change_case",
+  "doc_title": "Model Change Case",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "business_model_design",
+  "submodule_id": "value_design",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "business_model_design",
+    "submodule": "value_design",
+    "reference_doc_id": "model_change_case",
+    "evidence_gaps": [
+      "approval routing",
+      "implementation follow-through rules"
+    ]
+  }
+}

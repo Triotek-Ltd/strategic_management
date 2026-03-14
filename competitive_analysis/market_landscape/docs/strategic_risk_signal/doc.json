@@ -1,0 +1,27 @@
+{
+  "doc_key": "strategic_risk_signal",
+  "doc_title": "Strategic Risk Signal",
+  "doc_kind": "workflow_case",
+  "status": "draft",
+  "module_id": "competitive_analysis",
+  "submodule_id": "market_landscape",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "workflow_case",
+  "classification": {
+    "archetype": "workflow_case",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "competitive_analysis",
+    "submodule": "market_landscape",
+    "reference_doc_id": "strategic_risk_signal",
+    "evidence_gaps": [
+      "risk thresholds",
+      "escalation-routing rules"
+    ]
+  }
+}

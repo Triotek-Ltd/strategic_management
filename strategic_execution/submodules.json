@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "execution_tracking",
+    "strategy_governance"
+  ]
+}

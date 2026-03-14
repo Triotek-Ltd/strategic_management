@@ -1,0 +1,29 @@
+{
+  "doc_key": "strategic_plan",
+  "doc_title": "Strategic Plan",
+  "doc_kind": "configuration",
+  "status": "draft",
+  "module_id": "strategic_planning",
+  "submodule_id": "strategy_documents",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "configuration",
+  "classification": {
+    "archetype": "configuration",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "strategic_planning",
+    "submodule": "strategy_documents",
+    "reference_doc_id": "strategic_plan",
+    "evidence_gaps": [
+      "versioning rules",
+      "plan ownership model",
+      "publication",
+      "circulation rules"
+    ]
+  }
+}

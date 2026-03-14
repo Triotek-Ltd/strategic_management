@@ -1,0 +1,27 @@
+{
+  "doc_key": "business_model_record",
+  "doc_title": "Business Model Record",
+  "doc_kind": "configuration",
+  "status": "draft",
+  "module_id": "business_model_design",
+  "submodule_id": "business_model_canvas",
+  "app_id": "strategic_management",
+  "base_action_profile": "base_record_actions",
+  "doc_archetype": "configuration",
+  "classification": {
+    "archetype": "configuration",
+    "bundle": "management"
+  },
+  "planning_source": {
+    "type": "reference_doc_generation_manifest",
+    "bundle": "management",
+    "app": "strategic_management",
+    "module": "business_model_design",
+    "submodule": "business_model_canvas",
+    "reference_doc_id": "business_model_record",
+    "evidence_gaps": [
+      "version-control rules",
+      "decomposition of model sections"
+    ]
+  }
+}

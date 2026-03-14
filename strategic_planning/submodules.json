@@ -1,0 +1,6 @@
+{
+  "submodules": [
+    "planning_cycles",
+    "strategy_documents"
+  ]
+}
