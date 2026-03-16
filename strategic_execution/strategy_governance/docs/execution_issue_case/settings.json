@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_execution_plan",
+      "doc_id": "execution_plan",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_execution_milestone",
+      "doc_id": "execution_milestone",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_strategic_risk_signal",
+      "doc_id": "strategic_risk_signal",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "execution_plan",
+      "execution_milestone",
+      "strategic_risk_signal"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -57,6 +80,39 @@
   "runtime_hints": {
     "doc_key": "execution_issue_case",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "execution_plan",
+          "execution_milestone",
+          "strategic_risk_signal"
+        ],
+        "borrowed_fields": [
+          "linked plan or milestone context from source docs"
+        ],
+        "inferred_roles": [
+          "case owner"
+        ]
+      },
+      "actors": [
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "case owner"
+        ],
+        "assign": [
+          "case owner"
+        ],
+        "close": [
+          "case owner"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

@@ -54,7 +54,10 @@
       "workflow_state"
     ],
     "field_purposes": {
-      "workflow_state": "lifecycle_state"
+      "workflow_state": "lifecycle_state",
+      "related_business_model_record": "relation_collection",
+      "related_value_proposition": "relation_collection",
+      "related_model_change_case": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -88,7 +91,46 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "business_model_record",
+        "value_proposition",
+        "model_change_case"
+      ],
+      "borrowed_fields": [
+        "linked customer scope",
+        "channel summary from business_model_record"
+      ],
+      "inferred_roles": [
+        "account owner",
+        "case owner"
+      ]
+    },
+    "actors": [
+      "account owner",
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "account owner"
+      ],
+      "update": [
+        "account owner"
+      ],
+      "review": [
+        "case owner"
+      ],
+      "approve": [
+        "case owner"
+      ],
+      "archive": [
+        "account owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "business_model_record",
     "value_proposition",

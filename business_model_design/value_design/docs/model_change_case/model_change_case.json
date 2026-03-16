@@ -73,7 +73,11 @@
         "outcome",
         "implementation_note"
       ],
-      "relations": [],
+      "relations": [
+        "related_business_model_record",
+        "related_value_proposition",
+        "related_revenue_model"
+      ],
       "amounts": [],
       "dates": [],
       "parties": [],
@@ -354,6 +358,78 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_business_model_record",
+        "label": "Related Business Model Record",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "business_model_record",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_value_proposition",
+        "label": "Related Value Proposition",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "value_proposition",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_revenue_model",
+        "label": "Related Revenue Model",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "revenue_model",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -468,16 +544,28 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
+          "create",
+          "submit",
           "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "approve",
+          "reject",
+          "close",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "case owner",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "submit",
+          "review",
+          "approve",
+          "reject",
+          "close",
           "archive"
         ]
       }
@@ -556,7 +644,26 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_business_model_record",
+        "doc_id": "business_model_record",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_value_proposition",
+        "doc_id": "value_proposition",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_revenue_model",
+        "doc_id": "revenue_model",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -564,7 +671,11 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "business_model_record",
+        "value_proposition",
+        "revenue_model"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -585,7 +696,49 @@
     "runtime_hints": {
       "doc_key": "model_change_case",
       "supports_related_lookup": true,
-      "supports_fetch_rules": true
+      "supports_fetch_rules": true,
+      "workflow_hints": {
+        "relation_context": {
+          "related_docs": [
+            "business_model_record",
+            "value_proposition",
+            "revenue_model"
+          ],
+          "borrowed_fields": [
+            "current model details from business_model_record"
+          ],
+          "inferred_roles": [
+            "case owner"
+          ]
+        },
+        "actors": [
+          "case owner"
+        ],
+        "action_actors": {
+          "create": [
+            "case owner"
+          ],
+          "submit": [
+            "case owner"
+          ],
+          "review": [
+            "case owner"
+          ],
+          "approve": [
+            "case owner"
+          ],
+          "reject": [
+            "case owner"
+          ],
+          "close": [
+            "case owner"
+          ],
+          "archive": [
+            "case owner"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -661,6 +814,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -680,6 +836,61 @@
       "doc_kind": "workflow_case"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/strategic_management/business_model_design/value_design/model_change_case/",
+    "status_field": "workflow_state",
+    "initial_state": "proposed",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "submit",
+        "source_state": "proposed",
+        "target_state": "in_review",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "review",
+        "source_state": "proposed",
+        "target_state": "in_review",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "approve",
+        "source_state": "proposed",
+        "target_state": "approved",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "reject",
+        "source_state": "proposed",
+        "target_state": "rejected",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "close",
+        "source_state": "proposed",
+        "target_state": "closed",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "proposed",
+        "target_state": "archived",
+        "disallowed_state": "closed"
+      }
+    ],
+    "related_docs": [
+      "business_model_record",
+      "value_proposition",
+      "revenue_model"
+    ],
+    "downstream_effects": [],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -687,7 +898,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

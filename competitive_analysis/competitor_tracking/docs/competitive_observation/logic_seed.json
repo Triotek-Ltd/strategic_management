@@ -54,7 +54,10 @@
     "field_purposes": {
       "workflow_state": "lifecycle_state",
       "posting_date": "posting_date",
-      "observation_date": "schedule_marker"
+      "observation_date": "schedule_marker",
+      "related_competitor_profile": "relation_collection",
+      "related_market_analysis": "relation_collection",
+      "related_strategic_risk_signal": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -86,6 +89,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "competitor_profile",
     "market_analysis",

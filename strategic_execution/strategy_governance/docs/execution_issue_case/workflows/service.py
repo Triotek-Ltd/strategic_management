@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['opened', 'in_progress', 'mitigating', 'escalated'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['opened', 'in_progress', 'mitigating', 'escalated'], 'transitions_to': 'in_progress'}, 'mitigate': {'allowed_in_states': ['opened', 'in_progress', 'mitigating', 'escalated'], 'transitions_to': None}, 'escalate': {'allowed_in_states': ['opened', 'in_progress', 'mitigating', 'escalated'], 'transitions_to': 'escalated'}, 'close': {'allowed_in_states': ['opened', 'in_progress', 'mitigating', 'escalated'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['opened', 'in_progress', 'mitigating', 'escalated'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['execution_plan', 'execution_milestone', 'strategic_risk_signal'], 'borrowed_fields': ['linked plan or milestone context from source docs'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'assign': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

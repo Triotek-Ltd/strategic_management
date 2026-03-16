@@ -56,7 +56,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "posting_date": "posting_date"
+      "posting_date": "posting_date",
+      "related_execution_plan": "relation_collection",
+      "related_execution_milestone": "relation_collection",
+      "related_execution_issue_case": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -89,7 +92,40 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "execution_plan",
+        "execution_milestone",
+        "execution_issue_case"
+      ],
+      "borrowed_fields": [
+        "plan or strategy identity from linked records"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "review": [
+        "case owner"
+      ],
+      "publish": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "execution_plan",
     "execution_milestone",

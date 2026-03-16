@@ -35,7 +35,32 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_growth_initiative",
+      "doc_id": "growth_initiative",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_execution_milestone",
+      "doc_id": "execution_milestone",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_strategy_status_report",
+      "doc_id": "strategy_status_report",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_execution_issue_case",
+      "doc_id": "execution_issue_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -43,7 +68,12 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "growth_initiative",
+      "execution_milestone",
+      "strategy_status_report",
+      "execution_issue_case"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -64,6 +94,49 @@
   "runtime_hints": {
     "doc_key": "execution_plan",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "growth_initiative",
+          "execution_milestone",
+          "strategy_status_report",
+          "execution_issue_case"
+        ],
+        "borrowed_fields": [
+          "strategic priorities from growth_initiative or corporate_strategy_record"
+        ],
+        "inferred_roles": [
+          "case owner"
+        ]
+      },
+      "actors": [
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "case owner"
+        ],
+        "update": [
+          "case owner"
+        ],
+        "review": [
+          "case owner"
+        ],
+        "approve": [
+          "case owner"
+        ],
+        "activate": [
+          "case owner"
+        ],
+        "close": [
+          "case owner"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

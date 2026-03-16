@@ -8,7 +8,7 @@ ACTION_ID = "review"
 ACTION_RULE = {'allowed_in_states': ['draft', 'approved', 'active', 'revised', 'completed'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['growth_initiative', 'execution_milestone', 'strategy_status_report', 'execution_issue_case'], 'borrowed_fields': ['strategic priorities from growth_initiative or corporate_strategy_record'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'update': ['case owner'], 'review': ['case owner'], 'approve': ['case owner'], 'activate': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 def handle_review(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

@@ -5,9 +5,11 @@ from __future__ import annotations
 
 ARCHETYPE_PROFILE = {'workflow_profile': {'mode': 'configuration_control', 'case_management': False}, 'reporting_profile': {'supports_snapshots': False, 'supports_outputs': False}, 'integration_profile': {'external_sync_enabled': True}, 'lifecycle_states': ['draft', 'approved', 'active', 'superseded', 'archived'], 'is_transactional': False}
 
-CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state'}, 'search_fields': ['title', 'reference_no', 'description', 'model_code', 'customer_scope', 'value_creation_summary'], 'list_columns': ['title', 'reference_no', 'workflow_state', 'modified'], 'initial_state': 'draft', 'lifecycle_states': ['draft', 'approved', 'active', 'superseded', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'update': None, 'review': None, 'approve': 'approved', 'archive': 'archived'}}
+CONTRACT = {'title_field': 'title', 'status_field': 'workflow_state', 'reference_field': 'reference_no', 'required_fields': ['title', 'workflow_state'], 'field_purposes': {'workflow_state': 'lifecycle_state', 'related_value_proposition': 'relation_collection', 'related_revenue_model': 'relation_collection', 'related_model_change_case': 'relation_collection'}, 'search_fields': ['title', 'reference_no', 'description', 'model_code', 'customer_scope', 'value_creation_summary'], 'list_columns': ['title', 'reference_no', 'workflow_state', 'modified'], 'initial_state': 'draft', 'lifecycle_states': ['draft', 'approved', 'active', 'superseded', 'archived'], 'terminal_states': ['archived'], 'action_targets': {'create': None, 'update': None, 'review': None, 'approve': 'approved', 'archive': 'archived'}}
 
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['value_proposition', 'revenue_model', 'model_change_case'], 'borrowed_fields': [], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'update': ['case owner'], 'review': ['case owner'], 'approve': ['case owner'], 'archive': ['case owner']}}
+
+SIDE_EFFECT_HINTS = {'downstream_effects': [], 'related_docs': ['value_proposition', 'revenue_model', 'model_change_case'], 'action_targets': {'create': None, 'update': None, 'review': None, 'approve': 'approved', 'archive': 'archived'}, 'action_side_effects_file': 'side_effects.json'}
 
 class DomainService:
     doc_id = "business_model_record"
@@ -63,12 +65,28 @@ class DomainService:
     def after_update(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         return serialized_data
 
+    def after_action(
+        self,
+        instance,
+        action_id: str,
+        payload: dict,
+        action_result: dict,
+        context: dict | None = None,
+    ) -> dict:
+        return {
+            "updates": {},
+            "side_effects": [],
+        }
+
     def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
         serialized_data.setdefault("_business_capabilities", self.business_capabilities())
         return serialized_data
 
     def workflow_objective(self) -> str | None:
         return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
 
     def business_capabilities(self) -> dict:
         return {

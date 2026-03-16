@@ -8,7 +8,7 @@ ACTION_ID = "create"
 ACTION_RULE = {'allowed_in_states': ['opened', 'in_progress', 'mitigating', 'escalated'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['execution_plan', 'execution_milestone', 'strategic_risk_signal'], 'borrowed_fields': ['linked plan or milestone context from source docs'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'assign': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 def handle_create(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

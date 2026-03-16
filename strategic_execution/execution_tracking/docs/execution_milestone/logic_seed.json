@@ -64,7 +64,9 @@
       "workflow_state": "lifecycle_state",
       "milestone_date": "schedule_marker",
       "owner": "actor_reference",
-      "milestone_status": "status_flag"
+      "milestone_status": "status_flag",
+      "related_execution_plan": "relation_collection",
+      "related_execution_issue_case": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -102,7 +104,43 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "execution_plan",
+        "execution_issue_case"
+      ],
+      "borrowed_fields": [
+        "plan owner",
+        "timeline from execution_plan"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "assign": [
+        "case owner"
+      ],
+      "track": [
+        "case owner"
+      ],
+      "close": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "execution_plan",
     "execution_issue_case"

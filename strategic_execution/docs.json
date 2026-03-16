@@ -1,8 +1,8 @@
 {
   "docs": [
+    "execution_issue_case",
     "execution_milestone",
     "execution_plan",
-    "execution_issue_case",
     "strategy_status_report"
   ]
 }

@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_growth_initiative",
+      "doc_id": "growth_initiative",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_portfolio_decision",
+      "doc_id": "portfolio_decision",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_strategy_review_note",
+      "doc_id": "strategy_review_note",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "growth_initiative",
+      "portfolio_decision",
+      "strategy_review_note"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [],
@@ -53,6 +76,7 @@
   "runtime_hints": {
     "doc_key": "corporate_strategy_record",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "action_side_effects_file": "side_effects.json"
   }
 }

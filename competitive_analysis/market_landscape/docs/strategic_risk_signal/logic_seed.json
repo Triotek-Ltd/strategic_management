@@ -63,7 +63,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_market_analysis": "relation_collection",
+      "related_competitive_observation": "relation_collection",
+      "related_execution_issue_case": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -102,7 +105,43 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "market_analysis",
+        "competitive_observation",
+        "execution_issue_case"
+      ],
+      "borrowed_fields": [
+        "source context from market_analysis or competitive_observation"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "assign": [
+        "case owner"
+      ],
+      "review": [
+        "case owner"
+      ],
+      "close": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "market_analysis",
     "competitive_observation",

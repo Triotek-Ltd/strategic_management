@@ -23,7 +23,20 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_business_model_record",
+      "doc_id": "business_model_record",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_revenue_model",
+      "doc_id": "revenue_model",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -31,7 +44,10 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "business_model_record",
+      "revenue_model"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -52,6 +68,41 @@
   "runtime_hints": {
     "doc_key": "value_proposition",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "business_model_record",
+          "revenue_model"
+        ],
+        "borrowed_fields": [
+          "customer scope from business_model_record"
+        ],
+        "inferred_roles": [
+          "account owner"
+        ]
+      },
+      "actors": [
+        "account owner"
+      ],
+      "action_actors": {
+        "create": [
+          "account owner"
+        ],
+        "update": [
+          "account owner"
+        ],
+        "review": [
+          "account owner"
+        ],
+        "publish": [
+          "account owner"
+        ],
+        "archive": [
+          "account owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

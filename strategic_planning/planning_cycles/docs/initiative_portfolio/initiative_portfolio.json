@@ -71,7 +71,12 @@
         "priority_summary",
         "portfolio_state"
       ],
-      "relations": [],
+      "relations": [
+        "related_strategic_plan",
+        "related_strategic_goal",
+        "related_growth_initiative",
+        "related_execution_plan"
+      ],
       "amounts": [
         "currency",
         "total_amount"
@@ -455,6 +460,102 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_strategic_plan",
+        "label": "Related Strategic Plan",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "strategic_plan",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_strategic_goal",
+        "label": "Related Strategic Goal",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "strategic_goal",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_growth_initiative",
+        "label": "Related Growth Initiative",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "growth_initiative",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_execution_plan",
+        "label": "Related Execution Plan",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "execution_plan",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -560,16 +661,13 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
+          "create",
           "review",
-          "assign",
-          "track",
-          "monitor",
-          "confirm",
+          "approve",
+          "rebalance",
+          "close",
           "archive"
         ]
       }
@@ -659,7 +757,32 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_strategic_plan",
+        "doc_id": "strategic_plan",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_strategic_goal",
+        "doc_id": "strategic_goal",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_growth_initiative",
+        "doc_id": "growth_initiative",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_execution_plan",
+        "doc_id": "execution_plan",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -667,7 +790,12 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "strategic_plan",
+        "strategic_goal",
+        "growth_initiative",
+        "execution_plan"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -688,7 +816,8 @@
     "runtime_hints": {
       "doc_key": "initiative_portfolio",
       "supports_related_lookup": true,
-      "supports_fetch_rules": true
+      "supports_fetch_rules": true,
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -768,6 +897,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -786,6 +918,45 @@
       "doc_kind": "transaction"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/strategic_management/strategic_planning/planning_cycles/initiative_portfolio/",
+    "status_field": "workflow_state",
+    "initial_state": "draft",
+    "required_fields": [
+      "title",
+      "workflow_state",
+      "transaction_date"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "approve",
+        "source_state": "draft",
+        "target_state": "approved",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "close",
+        "source_state": "draft",
+        "target_state": "closed",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "draft",
+        "target_state": "archived",
+        "disallowed_state": "closed"
+      }
+    ],
+    "related_docs": [
+      "strategic_plan",
+      "strategic_goal",
+      "growth_initiative",
+      "execution_plan"
+    ],
+    "downstream_effects": [],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -793,7 +964,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

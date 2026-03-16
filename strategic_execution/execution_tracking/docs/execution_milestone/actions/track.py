@@ -8,7 +8,7 @@ ACTION_ID = "track"
 ACTION_RULE = {'allowed_in_states': ['planned', 'active', 'delayed', 'completed'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['execution_plan', 'execution_issue_case'], 'borrowed_fields': ['plan owner', 'timeline from execution_plan'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'assign': ['case owner'], 'track': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 def handle_track(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

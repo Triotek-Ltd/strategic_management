@@ -63,7 +63,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "approver": "actor_reference"
+      "approver": "actor_reference",
+      "related_business_model_record": "relation_collection",
+      "related_value_proposition": "relation_collection",
+      "related_revenue_model": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -102,7 +105,49 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "business_model_record",
+        "value_proposition",
+        "revenue_model"
+      ],
+      "borrowed_fields": [
+        "current model details from business_model_record"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "submit": [
+        "case owner"
+      ],
+      "review": [
+        "case owner"
+      ],
+      "approve": [
+        "case owner"
+      ],
+      "reject": [
+        "case owner"
+      ],
+      "close": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "business_model_record",
     "value_proposition",

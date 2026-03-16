@@ -71,7 +71,11 @@
       "party": "primary_party",
       "currency": "currency_code",
       "total_amount": "total_amount",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_growth_initiative": "relation_collection",
+      "related_execution_milestone": "relation_collection",
+      "related_strategy_status_report": "relation_collection",
+      "related_execution_issue_case": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -114,7 +118,50 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "growth_initiative",
+        "execution_milestone",
+        "strategy_status_report",
+        "execution_issue_case"
+      ],
+      "borrowed_fields": [
+        "strategic priorities from growth_initiative or corporate_strategy_record"
+      ],
+      "inferred_roles": [
+        "case owner"
+      ]
+    },
+    "actors": [
+      "case owner"
+    ],
+    "action_actors": {
+      "create": [
+        "case owner"
+      ],
+      "update": [
+        "case owner"
+      ],
+      "review": [
+        "case owner"
+      ],
+      "approve": [
+        "case owner"
+      ],
+      "activate": [
+        "case owner"
+      ],
+      "close": [
+        "case owner"
+      ],
+      "archive": [
+        "case owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "growth_initiative",
     "execution_milestone",

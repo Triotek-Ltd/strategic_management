@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['draft', 'approved', 'active', 'revised', 'completed'], 'transitions_to': None}, 'update': {'allowed_in_states': ['draft', 'approved', 'active', 'revised', 'completed'], 'transitions_to': None}, 'review': {'allowed_in_states': ['draft', 'approved', 'active', 'revised', 'completed'], 'transitions_to': None}, 'approve': {'allowed_in_states': ['draft', 'approved', 'active', 'revised', 'completed'], 'transitions_to': 'approved'}, 'activate': {'allowed_in_states': ['draft'], 'transitions_to': 'active'}, 'close': {'allowed_in_states': ['draft', 'approved', 'active', 'revised', 'completed'], 'transitions_to': 'closed'}, 'revise': {'allowed_in_states': ['draft', 'approved', 'active', 'revised', 'completed'], 'transitions_to': None}, 'archive': {'allowed_in_states': ['draft', 'approved', 'active', 'revised', 'completed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['growth_initiative', 'execution_milestone', 'strategy_status_report', 'execution_issue_case'], 'borrowed_fields': ['strategic priorities from growth_initiative or corporate_strategy_record'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'update': ['case owner'], 'review': ['case owner'], 'approve': ['case owner'], 'activate': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

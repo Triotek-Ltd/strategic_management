@@ -49,7 +49,10 @@
       "workflow_state"
     ],
     "field_purposes": {
-      "workflow_state": "lifecycle_state"
+      "workflow_state": "lifecycle_state",
+      "related_market_analysis": "relation_collection",
+      "related_competitive_observation": "relation_collection",
+      "related_strategic_risk_signal": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -81,6 +84,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "market_analysis",
     "competitive_observation",

@@ -1,8 +1,8 @@
 {
   "docs": [
     "business_model_record",
-    "revenue_model",
     "model_change_case",
+    "revenue_model",
     "value_proposition"
   ]
 }

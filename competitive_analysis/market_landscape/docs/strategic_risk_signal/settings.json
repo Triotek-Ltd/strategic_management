@@ -28,7 +28,26 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_market_analysis",
+      "doc_id": "market_analysis",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_competitive_observation",
+      "doc_id": "competitive_observation",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_execution_issue_case",
+      "doc_id": "execution_issue_case",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -36,7 +55,11 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "market_analysis",
+      "competitive_observation",
+      "execution_issue_case"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -57,6 +80,42 @@
   "runtime_hints": {
     "doc_key": "strategic_risk_signal",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "workflow_hints": {
+      "relation_context": {
+        "related_docs": [
+          "market_analysis",
+          "competitive_observation",
+          "execution_issue_case"
+        ],
+        "borrowed_fields": [
+          "source context from market_analysis or competitive_observation"
+        ],
+        "inferred_roles": [
+          "case owner"
+        ]
+      },
+      "actors": [
+        "case owner"
+      ],
+      "action_actors": {
+        "create": [
+          "case owner"
+        ],
+        "assign": [
+          "case owner"
+        ],
+        "review": [
+          "case owner"
+        ],
+        "close": [
+          "case owner"
+        ],
+        "archive": [
+          "case owner"
+        ]
+      }
+    },
+    "action_side_effects_file": "side_effects.json"
   }
 }

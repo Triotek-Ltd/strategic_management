@@ -285,6 +285,78 @@
         "filterable": true,
         "sortable": true
       }
+    },
+    {
+      "field_id": "related_execution_plan",
+      "label": "Related Execution Plan",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "execution_plan",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_execution_milestone",
+      "label": "Related Execution Milestone",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "execution_milestone",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
+    },
+    {
+      "field_id": "related_execution_issue_case",
+      "label": "Related Execution Issue Case",
+      "type": "Table MultiSelect",
+      "required": false,
+      "read_only": false,
+      "default": null,
+      "unique": false,
+      "options": null,
+      "purpose": "relation_collection",
+      "linked_doc": "execution_issue_case",
+      "depends_on": null,
+      "mandatory_depends_on": null,
+      "read_only_depends_on": null,
+      "fetch_from": null,
+      "allow_on_submit": false,
+      "indexed": false,
+      "ui": {
+        "visible": false,
+        "list_visible": false,
+        "filterable": false,
+        "sortable": false
+      }
     }
   ],
   "field_groups": {
@@ -309,7 +381,11 @@
       "key_risks",
       "review_state"
     ],
-    "relations": [],
+    "relations": [
+      "related_execution_plan",
+      "related_execution_milestone",
+      "related_execution_issue_case"
+    ],
     "amounts": [],
     "dates": [
       "posting_date"
@@ -390,16 +466,22 @@
     {
       "role_id": "System Manager",
       "actions": [
-        "create",
-        "update",
         "view",
         "list",
-        "record",
+        "create",
         "review",
-        "assign",
-        "track",
-        "monitor",
-        "confirm",
+        "publish",
+        "archive"
+      ]
+    },
+    {
+      "role_id": "case owner",
+      "actions": [
+        "view",
+        "list",
+        "create",
+        "review",
+        "publish",
         "archive"
       ]
     }

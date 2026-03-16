@@ -8,7 +8,7 @@ ACTION_ID = "mitigate"
 ACTION_RULE = {'allowed_in_states': ['raised', 'reviewed', 'mitigating', 'escalated'], 'transitions_to': None}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['market_analysis', 'competitive_observation', 'execution_issue_case'], 'borrowed_fields': ['source context from market_analysis or competitive_observation'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'assign': ['case owner'], 'review': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 def handle_mitigate(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

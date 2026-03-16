@@ -67,7 +67,11 @@
       "party": "primary_party",
       "currency": "currency_code",
       "total_amount": "total_amount",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_strategic_plan": "relation_collection",
+      "related_strategic_goal": "relation_collection",
+      "related_growth_initiative": "relation_collection",
+      "related_execution_plan": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -108,6 +112,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "strategic_plan",
     "strategic_goal",

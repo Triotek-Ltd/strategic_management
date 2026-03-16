@@ -59,7 +59,9 @@
       "start_at": "event_start",
       "end_at": "event_end",
       "start_date": "schedule_marker",
-      "end_date": "schedule_marker"
+      "end_date": "schedule_marker",
+      "related_strategic_plan": "relation_collection",
+      "related_strategic_goal": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -95,6 +97,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "strategic_plan",
     "strategic_goal"

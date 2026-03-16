@@ -68,7 +68,10 @@
         "owner",
         "exception_note"
       ],
-      "relations": [],
+      "relations": [
+        "related_execution_plan",
+        "related_execution_issue_case"
+      ],
       "amounts": [],
       "dates": [
         "milestone_date"
@@ -337,6 +340,54 @@
           "filterable": true,
           "sortable": true
         }
+      },
+      {
+        "field_id": "related_execution_plan",
+        "label": "Related Execution Plan",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "execution_plan",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
+      },
+      {
+        "field_id": "related_execution_issue_case",
+        "label": "Related Execution Issue Case",
+        "type": "Table MultiSelect",
+        "required": false,
+        "read_only": false,
+        "default": null,
+        "unique": false,
+        "options": null,
+        "purpose": "relation_collection",
+        "linked_doc": "execution_issue_case",
+        "depends_on": null,
+        "mandatory_depends_on": null,
+        "read_only_depends_on": null,
+        "fetch_from": null,
+        "allow_on_submit": false,
+        "indexed": false,
+        "ui": {
+          "visible": false,
+          "list_visible": false,
+          "filterable": false,
+          "sortable": false
+        }
       }
     ],
     "title_field": "title",
@@ -442,16 +493,25 @@
       {
         "role_id": "System Manager",
         "actions": [
-          "create",
-          "update",
           "view",
           "list",
-          "record",
-          "review",
+          "create",
           "assign",
           "track",
-          "monitor",
-          "confirm",
+          "delay",
+          "close",
+          "archive"
+        ]
+      },
+      {
+        "role_id": "case owner",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "assign",
+          "track",
+          "close",
           "archive"
         ]
       }
@@ -525,7 +585,20 @@
         "show_in_related_panel": true
       }
     ],
-    "lookup_rules": [],
+    "lookup_rules": [
+      {
+        "field_id": "related_execution_plan",
+        "doc_id": "execution_plan",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      },
+      {
+        "field_id": "related_execution_issue_case",
+        "doc_id": "execution_issue_case",
+        "lookup_mode": "multiple",
+        "purpose": "relation_collection"
+      }
+    ],
     "fetch_rules": [],
     "reference_map": {
       "primary_reference_field": "reference_no",
@@ -533,7 +606,10 @@
     },
     "relation_rules": {
       "parent_doc": null,
-      "child_docs": [],
+      "child_docs": [
+        "execution_plan",
+        "execution_issue_case"
+      ],
       "show_related_panel": true
     },
     "borrowed_fields": [
@@ -557,7 +633,43 @@
     "runtime_hints": {
       "doc_key": "execution_milestone",
       "supports_related_lookup": true,
-      "supports_fetch_rules": true
+      "supports_fetch_rules": true,
+      "workflow_hints": {
+        "relation_context": {
+          "related_docs": [
+            "execution_plan",
+            "execution_issue_case"
+          ],
+          "borrowed_fields": [
+            "plan owner",
+            "timeline from execution_plan"
+          ],
+          "inferred_roles": [
+            "case owner"
+          ]
+        },
+        "actors": [
+          "case owner"
+        ],
+        "action_actors": {
+          "create": [
+            "case owner"
+          ],
+          "assign": [
+            "case owner"
+          ],
+          "track": [
+            "case owner"
+          ],
+          "close": [
+            "case owner"
+          ],
+          "archive": [
+            "case owner"
+          ]
+        }
+      },
+      "action_side_effects_file": "side_effects.json"
     }
   },
   "classification": {
@@ -633,6 +745,9 @@
       "reports": "reports/service.py",
       "integrations": "integrations/service.py"
     },
+    "runtime_contract": {
+      "side_effects_file": "side_effects.json"
+    },
     "action_handlers": {
       "base_dir": "actions",
       "registry": "actions/registry.py",
@@ -651,6 +766,36 @@
       "doc_kind": "workflow_case"
     }
   },
+  "testing": {
+    "seeded": true,
+    "api_base_path": "/apis/strategic_management/strategic_execution/execution_tracking/execution_milestone/",
+    "status_field": "workflow_state",
+    "initial_state": "planned",
+    "required_fields": [
+      "title",
+      "workflow_state"
+    ],
+    "transition_scenarios": [
+      {
+        "action_id": "close",
+        "source_state": "planned",
+        "target_state": "closed",
+        "disallowed_state": "closed"
+      },
+      {
+        "action_id": "archive",
+        "source_state": "planned",
+        "target_state": "archived",
+        "disallowed_state": "closed"
+      }
+    ],
+    "related_docs": [
+      "execution_plan",
+      "execution_issue_case"
+    ],
+    "downstream_effects": [],
+    "action_side_effects_file": "side_effects.json"
+  },
   "runtime": {
     "source_of_truth": "doc_folder",
     "generated_from": [
@@ -658,7 +803,8 @@
       "schema.json",
       "actions.json",
       "settings.json",
-      "logic_seed.json"
+      "logic_seed.json",
+      "side_effects.json"
     ],
     "generator": "plug.apps.doc.file_handler"
   }

@@ -54,7 +54,9 @@
       "workflow_state"
     ],
     "field_purposes": {
-      "workflow_state": "lifecycle_state"
+      "workflow_state": "lifecycle_state",
+      "related_business_model_record": "relation_collection",
+      "related_revenue_model": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -88,7 +90,42 @@
       "archive": "archived"
     }
   },
-  "workflow_hints": {},
+  "workflow_hints": {
+    "relation_context": {
+      "related_docs": [
+        "business_model_record",
+        "revenue_model"
+      ],
+      "borrowed_fields": [
+        "customer scope from business_model_record"
+      ],
+      "inferred_roles": [
+        "account owner"
+      ]
+    },
+    "actors": [
+      "account owner"
+    ],
+    "action_actors": {
+      "create": [
+        "account owner"
+      ],
+      "update": [
+        "account owner"
+      ],
+      "review": [
+        "account owner"
+      ],
+      "publish": [
+        "account owner"
+      ],
+      "archive": [
+        "account owner"
+      ]
+    }
+  },
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "business_model_record",
     "revenue_model"

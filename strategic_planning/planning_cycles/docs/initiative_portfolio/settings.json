@@ -35,7 +35,32 @@
       "show_in_related_panel": true
     }
   ],
-  "lookup_rules": [],
+  "lookup_rules": [
+    {
+      "field_id": "related_strategic_plan",
+      "doc_id": "strategic_plan",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_strategic_goal",
+      "doc_id": "strategic_goal",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_growth_initiative",
+      "doc_id": "growth_initiative",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    },
+    {
+      "field_id": "related_execution_plan",
+      "doc_id": "execution_plan",
+      "lookup_mode": "multiple",
+      "purpose": "relation_collection"
+    }
+  ],
   "fetch_rules": [],
   "reference_map": {
     "primary_reference_field": "reference_no",
@@ -43,7 +68,12 @@
   },
   "relation_rules": {
     "parent_doc": null,
-    "child_docs": [],
+    "child_docs": [
+      "strategic_plan",
+      "strategic_goal",
+      "growth_initiative",
+      "execution_plan"
+    ],
     "show_related_panel": true
   },
   "borrowed_fields": [
@@ -64,6 +94,7 @@
   "runtime_hints": {
     "doc_key": "initiative_portfolio",
     "supports_related_lookup": true,
-    "supports_fetch_rules": true
+    "supports_fetch_rules": true,
+    "action_side_effects_file": "side_effects.json"
   }
 }

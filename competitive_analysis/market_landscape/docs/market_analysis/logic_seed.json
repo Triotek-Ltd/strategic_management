@@ -59,7 +59,10 @@
       "transaction_date": "transaction_date",
       "party": "primary_party",
       "currency": "currency_code",
-      "total_amount": "total_amount"
+      "total_amount": "total_amount",
+      "related_competitor_profile": "relation_collection",
+      "related_competitive_observation": "relation_collection",
+      "related_strategic_risk_signal": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -95,6 +98,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "competitor_profile",
     "competitive_observation",

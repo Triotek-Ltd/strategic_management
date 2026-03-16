@@ -68,7 +68,9 @@
       "currency": "currency_code",
       "total_amount": "total_amount",
       "owner": "actor_reference",
-      "effective_date": "schedule_marker"
+      "effective_date": "schedule_marker",
+      "related_corporate_strategy_record": "relation_collection",
+      "related_growth_initiative": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -109,6 +111,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "corporate_strategy_record",
     "growth_initiative"

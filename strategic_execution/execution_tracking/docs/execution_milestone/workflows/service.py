@@ -11,7 +11,7 @@ TERMINAL_STATES = ['closed', 'archived']
 ACTION_RULES = {'create': {'allowed_in_states': ['planned', 'active', 'delayed', 'completed'], 'transitions_to': None}, 'assign': {'allowed_in_states': ['planned', 'active', 'delayed', 'completed'], 'transitions_to': None}, 'track': {'allowed_in_states': ['planned', 'active', 'delayed', 'completed'], 'transitions_to': None}, 'delay': {'allowed_in_states': ['planned', 'active', 'delayed', 'completed'], 'transitions_to': None}, 'close': {'allowed_in_states': ['planned', 'active', 'delayed', 'completed'], 'transitions_to': 'closed'}, 'archive': {'allowed_in_states': ['planned', 'active', 'delayed', 'completed'], 'transitions_to': 'archived'}}
 
 STATE_FIELD = 'workflow_state'
-WORKFLOW_HINTS = {}
+WORKFLOW_HINTS = {'relation_context': {'related_docs': ['execution_plan', 'execution_issue_case'], 'borrowed_fields': ['plan owner', 'timeline from execution_plan'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'assign': ['case owner'], 'track': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
 class WorkflowService:
     def allowed_actions_for_state(self, state: str | None) -> list[str]:

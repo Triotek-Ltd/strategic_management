@@ -55,7 +55,10 @@
     ],
     "field_purposes": {
       "workflow_state": "lifecycle_state",
-      "owner": "actor_reference"
+      "owner": "actor_reference",
+      "related_growth_initiative": "relation_collection",
+      "related_portfolio_decision": "relation_collection",
+      "related_strategy_review_note": "relation_collection"
     },
     "search_fields": [
       "title",
@@ -90,6 +93,8 @@
     }
   },
   "workflow_hints": {},
+  "downstream_effects": [],
+  "action_side_effects_file": "side_effects.json",
   "related_docs": [
     "growth_initiative",
     "portfolio_decision",
