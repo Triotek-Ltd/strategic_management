@@ -4,5 +4,690 @@
   "app_id": "strategic_management",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Strategic Planning KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "strategic_planning",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Strategic Planning summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "strategic_planning",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Strategic Planning charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "strategic_planning",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "strategic_planning_trend_line",
+            "label": "Strategic Planning trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "strategic_planning_volume_column",
+            "label": "Strategic Planning volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "strategic_planning_distribution_donut",
+            "label": "Strategic Planning distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "initiative_portfolio_trend_line",
+            "label": "Initiative Portfolio trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "initiative_portfolio_volume_column",
+            "label": "Initiative Portfolio volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "initiative_portfolio_distribution_donut",
+            "label": "Initiative Portfolio distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "planning_cycle_trend_line",
+            "label": "Planning Cycle trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "planning_cycle_volume_column",
+            "label": "Planning Cycle volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "planning_cycle_distribution_donut",
+            "label": "Planning Cycle distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "strategic_goal_trend_line",
+            "label": "Strategic Goal trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "strategic_goal_volume_column",
+            "label": "Strategic Goal volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "strategic_goal_distribution_donut",
+            "label": "Strategic Goal distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "strategic_plan_trend_line",
+            "label": "Strategic Plan trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "strategic_plan_volume_column",
+            "label": "Strategic Plan volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "strategic_plan_distribution_donut",
+            "label": "Strategic Plan distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Strategic Planning reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "strategic_planning",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "strategic_planning",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "strategic_planning",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "strategic_planning",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "strategic_planning",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Strategic Planning Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Strategic Planning Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Initiative Portfolio Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Initiative Portfolio Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "strategic_planning_trend_line",
+        "label": "Strategic Planning trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "strategic_planning_volume_column",
+        "label": "Strategic Planning volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "strategic_planning_distribution_donut",
+        "label": "Strategic Planning distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "initiative_portfolio_trend_line",
+        "label": "Initiative Portfolio trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "initiative_portfolio_volume_column",
+        "label": "Initiative Portfolio volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "initiative_portfolio_distribution_donut",
+        "label": "Initiative Portfolio distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "planning_cycle_trend_line",
+        "label": "Planning Cycle trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "planning_cycle_volume_column",
+        "label": "Planning Cycle volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "planning_cycle_distribution_donut",
+        "label": "Planning Cycle distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "strategic_goal_trend_line",
+        "label": "Strategic Goal trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "strategic_goal_volume_column",
+        "label": "Strategic Goal volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "strategic_goal_distribution_donut",
+        "label": "Strategic Goal distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "strategic_plan_trend_line",
+        "label": "Strategic Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "strategic_plan_volume_column",
+        "label": "Strategic Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "strategic_plan_distribution_donut",
+        "label": "Strategic Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "initiative_portfolio",
+        "title": "Initiative Portfolio",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "planning_cycle",
+        "title": "Planning Cycle",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "strategic_goal",
+        "title": "Strategic Goal",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "strategic_plan",
+        "title": "Strategic Plan",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "strategic_plan",
+      "strategic_goal",
+      "growth_initiative",
+      "execution_plan",
+      "planning_cycle",
+      "initiative_portfolio",
+      "strategy_status_report"
+    ],
+    "upstream_docs": [
+      "strategic_plan",
+      "strategic_goal",
+      "growth_initiative",
+      "execution_plan",
+      "planning_cycle",
+      "initiative_portfolio",
+      "strategy_status_report"
+    ],
+    "downstream_docs": [
+      "strategic_plan",
+      "planning_cycle"
+    ],
+    "actors": [],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "strategic_plan",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "approve",
+        "target_doc": "planning_cycle",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "strategic_plan",
+      "strategic_goal",
+      "growth_initiative",
+      "execution_plan",
+      "planning_cycle",
+      "initiative_portfolio",
+      "strategy_status_report"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "initiative_portfolio",
+        "target_doc": "strategic_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "initiative_portfolio",
+        "target_doc": "strategic_goal",
+        "relation": "references"
+      },
+      {
+        "source_doc": "initiative_portfolio",
+        "target_doc": "growth_initiative",
+        "relation": "references"
+      },
+      {
+        "source_doc": "initiative_portfolio",
+        "target_doc": "execution_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "initiative_portfolio",
+        "target_doc": "strategic_plan",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "planning_cycle",
+        "target_doc": "strategic_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "planning_cycle",
+        "target_doc": "strategic_goal",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_goal",
+        "target_doc": "strategic_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_goal",
+        "target_doc": "planning_cycle",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_goal",
+        "target_doc": "initiative_portfolio",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_goal",
+        "target_doc": "execution_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "planning_cycle",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "strategic_goal",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "initiative_portfolio",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "strategy_status_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "planning_cycle",
+        "relation": "create_record",
+        "action_id": "approve"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "strategic_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "strategic_goal",
+          "kind": "doc"
+        },
+        {
+          "id": "growth_initiative",
+          "kind": "doc"
+        },
+        {
+          "id": "execution_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "planning_cycle",
+          "kind": "doc"
+        },
+        {
+          "id": "initiative_portfolio",
+          "kind": "doc"
+        },
+        {
+          "id": "strategy_status_report",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "initiative_portfolio",
+          "target_doc": "strategic_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "initiative_portfolio",
+          "target_doc": "strategic_goal",
+          "relation": "references"
+        },
+        {
+          "source_doc": "initiative_portfolio",
+          "target_doc": "growth_initiative",
+          "relation": "references"
+        },
+        {
+          "source_doc": "initiative_portfolio",
+          "target_doc": "execution_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "initiative_portfolio",
+          "target_doc": "strategic_plan",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "planning_cycle",
+          "target_doc": "strategic_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "planning_cycle",
+          "target_doc": "strategic_goal",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_goal",
+          "target_doc": "strategic_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_goal",
+          "target_doc": "planning_cycle",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_goal",
+          "target_doc": "initiative_portfolio",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_goal",
+          "target_doc": "execution_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_plan",
+          "target_doc": "planning_cycle",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_plan",
+          "target_doc": "strategic_goal",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_plan",
+          "target_doc": "initiative_portfolio",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_plan",
+          "target_doc": "strategy_status_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_plan",
+          "target_doc": "planning_cycle",
+          "relation": "create_record",
+          "action_id": "approve"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

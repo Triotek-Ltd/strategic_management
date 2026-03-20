@@ -4,5 +4,657 @@
   "app_id": "strategic_management",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Competitive Analysis KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "competitive_analysis",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Competitive Analysis summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "competitive_analysis",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Competitive Analysis charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "competitive_analysis",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "competitive_analysis_trend_line",
+            "label": "Competitive Analysis trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "competitive_analysis_volume_column",
+            "label": "Competitive Analysis volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "competitive_analysis_distribution_donut",
+            "label": "Competitive Analysis distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "competitive_observation_trend_line",
+            "label": "Competitive Observation trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "competitive_observation_volume_column",
+            "label": "Competitive Observation volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "competitive_observation_distribution_donut",
+            "label": "Competitive Observation distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "competitor_profile_trend_line",
+            "label": "Competitor Profile trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "competitor_profile_volume_column",
+            "label": "Competitor Profile volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "competitor_profile_distribution_donut",
+            "label": "Competitor Profile distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "market_analysis_trend_line",
+            "label": "Market Analysis trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "market_analysis_volume_column",
+            "label": "Market Analysis volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "market_analysis_distribution_donut",
+            "label": "Market Analysis distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "strategic_risk_signal_trend_line",
+            "label": "Strategic Risk Signal trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "strategic_risk_signal_volume_column",
+            "label": "Strategic Risk Signal volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "strategic_risk_signal_distribution_donut",
+            "label": "Strategic Risk Signal distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Competitive Analysis reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "competitive_analysis",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "competitive_analysis",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "competitive_analysis",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "competitive_analysis",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "competitive_analysis",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Competitive Analysis Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Competitive Analysis Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Competitive Observation Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Competitive Observation Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "competitive_analysis_trend_line",
+        "label": "Competitive Analysis trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "competitive_analysis_volume_column",
+        "label": "Competitive Analysis volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "competitive_analysis_distribution_donut",
+        "label": "Competitive Analysis distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "competitive_observation_trend_line",
+        "label": "Competitive Observation trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "competitive_observation_volume_column",
+        "label": "Competitive Observation volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "competitive_observation_distribution_donut",
+        "label": "Competitive Observation distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "competitor_profile_trend_line",
+        "label": "Competitor Profile trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "competitor_profile_volume_column",
+        "label": "Competitor Profile volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "competitor_profile_distribution_donut",
+        "label": "Competitor Profile distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "market_analysis_trend_line",
+        "label": "Market Analysis trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "market_analysis_volume_column",
+        "label": "Market Analysis volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "market_analysis_distribution_donut",
+        "label": "Market Analysis distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "strategic_risk_signal_trend_line",
+        "label": "Strategic Risk Signal trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "strategic_risk_signal_volume_column",
+        "label": "Strategic Risk Signal volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "strategic_risk_signal_distribution_donut",
+        "label": "Strategic Risk Signal distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "competitive_observation",
+        "title": "Competitive Observation",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "competitor_profile",
+        "title": "Competitor Profile",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "market_analysis",
+        "title": "Market Analysis",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "strategic_risk_signal",
+        "title": "Strategic Risk Signal",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "competitor_profile",
+      "market_analysis",
+      "strategic_risk_signal",
+      "competitive_observation",
+      "execution_issue_case"
+    ],
+    "upstream_docs": [
+      "competitor_profile",
+      "market_analysis",
+      "strategic_risk_signal",
+      "competitive_observation",
+      "execution_issue_case"
+    ],
+    "downstream_docs": [
+      "execution_issue_case"
+    ],
+    "actors": [
+      "case owner"
+    ],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "close",
+        "target_doc": "execution_issue_case",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "assign",
+        "target_doc": "execution_issue_case",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "competitor_profile",
+      "market_analysis",
+      "strategic_risk_signal",
+      "competitive_observation",
+      "execution_issue_case"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "competitive_observation",
+        "target_doc": "competitor_profile",
+        "relation": "references"
+      },
+      {
+        "source_doc": "competitive_observation",
+        "target_doc": "market_analysis",
+        "relation": "references"
+      },
+      {
+        "source_doc": "competitive_observation",
+        "target_doc": "strategic_risk_signal",
+        "relation": "references"
+      },
+      {
+        "source_doc": "competitor_profile",
+        "target_doc": "market_analysis",
+        "relation": "references"
+      },
+      {
+        "source_doc": "competitor_profile",
+        "target_doc": "competitive_observation",
+        "relation": "references"
+      },
+      {
+        "source_doc": "competitor_profile",
+        "target_doc": "strategic_risk_signal",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_analysis",
+        "target_doc": "competitor_profile",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_analysis",
+        "target_doc": "competitive_observation",
+        "relation": "references"
+      },
+      {
+        "source_doc": "market_analysis",
+        "target_doc": "strategic_risk_signal",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_risk_signal",
+        "target_doc": "market_analysis",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_risk_signal",
+        "target_doc": "competitive_observation",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_risk_signal",
+        "target_doc": "execution_issue_case",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_risk_signal",
+        "target_doc": "execution_issue_case",
+        "relation": "create_record",
+        "action_id": "close"
+      },
+      {
+        "source_doc": "strategic_risk_signal",
+        "target_doc": "execution_issue_case",
+        "relation": "create_record",
+        "action_id": "assign"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "competitor_profile",
+          "kind": "doc"
+        },
+        {
+          "id": "market_analysis",
+          "kind": "doc"
+        },
+        {
+          "id": "strategic_risk_signal",
+          "kind": "doc"
+        },
+        {
+          "id": "competitive_observation",
+          "kind": "doc"
+        },
+        {
+          "id": "execution_issue_case",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "competitive_observation",
+          "target_doc": "competitor_profile",
+          "relation": "references"
+        },
+        {
+          "source_doc": "competitive_observation",
+          "target_doc": "market_analysis",
+          "relation": "references"
+        },
+        {
+          "source_doc": "competitive_observation",
+          "target_doc": "strategic_risk_signal",
+          "relation": "references"
+        },
+        {
+          "source_doc": "competitor_profile",
+          "target_doc": "market_analysis",
+          "relation": "references"
+        },
+        {
+          "source_doc": "competitor_profile",
+          "target_doc": "competitive_observation",
+          "relation": "references"
+        },
+        {
+          "source_doc": "competitor_profile",
+          "target_doc": "strategic_risk_signal",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_analysis",
+          "target_doc": "competitor_profile",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_analysis",
+          "target_doc": "competitive_observation",
+          "relation": "references"
+        },
+        {
+          "source_doc": "market_analysis",
+          "target_doc": "strategic_risk_signal",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_risk_signal",
+          "target_doc": "market_analysis",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_risk_signal",
+          "target_doc": "competitive_observation",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_risk_signal",
+          "target_doc": "execution_issue_case",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategic_risk_signal",
+          "target_doc": "execution_issue_case",
+          "relation": "create_record",
+          "action_id": "close"
+        },
+        {
+          "source_doc": "strategic_risk_signal",
+          "target_doc": "execution_issue_case",
+          "relation": "create_record",
+          "action_id": "assign"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }

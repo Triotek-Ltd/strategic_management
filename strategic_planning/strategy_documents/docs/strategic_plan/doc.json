@@ -10,7 +10,8 @@
   "doc_archetype": "configuration",
   "classification": {
     "archetype": "configuration",
-    "bundle": "management"
+    "bundle": "management",
+    "doc_kind": "configuration"
   },
   "planning_source": {
     "type": "reference_doc_generation_manifest",
@@ -25,5 +26,270 @@
       "publication",
       "circulation rules"
     ]
+  },
+  "ui": {
+    "icon_key": "settings",
+    "accent": "#5c677d",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Strategic Plan KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Strategic Plan summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Strategic Plan charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Strategic Plan reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Strategic Plan records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "strategic_plan",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "strategic_plan",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "strategic_plan",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "strategic_plan",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Strategic Plan Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Strategic Plan Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Strategic Plan Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Strategic Plan Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": false,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "strategic_plan_trend_line",
+        "label": "Strategic Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "strategic_plan_volume_column",
+        "label": "Strategic Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "strategic_plan_distribution_donut",
+        "label": "Strategic Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "planning_cycle",
+      "strategic_goal",
+      "initiative_portfolio",
+      "strategy_status_report",
+      "retention_policy"
+    ],
+    "upstream_docs": [
+      "planning_cycle",
+      "strategic_goal",
+      "initiative_portfolio",
+      "strategy_status_report"
+    ],
+    "downstream_docs": [
+      "planning_cycle"
+    ],
+    "borrowed_fields": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "planning_cycle",
+        "effect_type": "create_record"
+      }
+    ],
+    "downstream_effects": [],
+    "actors": [],
+    "handoff_targets": [
+      "planning_cycle",
+      "strategic_goal",
+      "initiative_portfolio",
+      "strategy_status_report"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "planning_cycle",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "strategic_goal",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "initiative_portfolio",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "strategy_status_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "planning_cycle",
+        "relation": "create_record",
+        "action_id": "approve"
+      }
+    ]
+  },
+  "contract_version": 1,
+  "records_profile": {
+    "record_class": "business_record",
+    "legal_significance": "standard",
+    "confidentiality": "internal",
+    "official_copy_format": "pdf",
+    "evidence_gaps": []
   }
 }

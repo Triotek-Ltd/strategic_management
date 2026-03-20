@@ -15,6 +15,263 @@
   },
   "doc_key": "strategic_plan",
   "doc_title": "Strategic Plan",
+  "ui": {
+    "icon_key": "settings",
+    "accent": "#5c677d",
+    "logo_image": null,
+    "cover_image": null,
+    "preferred_views": [
+      "list",
+      "table",
+      "detail",
+      "report"
+    ],
+    "default_density": "comfortable"
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "doc",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "records",
+      "flatten_submodules_in_ui": false,
+      "views": [
+        "list",
+        "table",
+        "detail",
+        "report"
+      ]
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Strategic Plan KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Strategic Plan summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Strategic Plan charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "trend"
+        }
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Strategic Plan reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "reporting"
+        }
+      },
+      {
+        "id": "records",
+        "type": "record_table",
+        "title": "Strategic Plan records",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "doc",
+          "entity_id": "strategic_plan",
+          "metric_family": "records"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "strategic_plan",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "strategic_plan",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "strategic_plan",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "doc",
+        "entity_id": "strategic_plan",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Strategic Plan Overview",
+        "report_type": "dashboard_summary",
+        "surface": "doc"
+      },
+      {
+        "id": "trend_report",
+        "label": "Strategic Plan Trends",
+        "report_type": "trend_analysis",
+        "surface": "doc"
+      },
+      {
+        "id": "summary_report",
+        "label": "Strategic Plan Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Strategic Plan Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "supports_outputs": false,
+    "supports_print_formats": true,
+    "default_views": [
+      "summary",
+      "trend",
+      "report_table"
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "strategic_plan_trend_line",
+        "label": "Strategic Plan trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "strategic_plan_volume_column",
+        "label": "Strategic Plan volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "strategic_plan_distribution_donut",
+        "label": "Strategic Plan distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "planning_cycle",
+      "strategic_goal",
+      "initiative_portfolio",
+      "strategy_status_report",
+      "retention_policy"
+    ],
+    "upstream_docs": [
+      "planning_cycle",
+      "strategic_goal",
+      "initiative_portfolio",
+      "strategy_status_report"
+    ],
+    "downstream_docs": [
+      "planning_cycle"
+    ],
+    "borrowed_fields": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "planning_cycle",
+        "effect_type": "create_record"
+      }
+    ],
+    "downstream_effects": [],
+    "actors": [],
+    "handoff_targets": [
+      "planning_cycle",
+      "strategic_goal",
+      "initiative_portfolio",
+      "strategy_status_report"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "planning_cycle",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "strategic_goal",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "initiative_portfolio",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "strategy_status_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategic_plan",
+        "target_doc": "planning_cycle",
+        "relation": "create_record",
+        "action_id": "approve"
+      }
+    ]
+  },
   "allowed_actions": [
     "create",
     "update",
@@ -372,7 +629,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       },
       {
         "field_id": "related_strategic_goal",
@@ -396,7 +654,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       },
       {
         "field_id": "related_initiative_portfolio",
@@ -420,7 +679,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       },
       {
         "field_id": "related_strategy_status_report",
@@ -444,7 +704,8 @@
           "list_visible": false,
           "filterable": false,
           "sortable": false
-        }
+        },
+        "relation_kind": "explicit"
       }
     ],
     "title_field": "title",
@@ -473,7 +734,12 @@
       "supports_attachments": true,
       "supports_comments": false,
       "supports_activity_log": true,
-      "supports_assignments": false
+      "supports_assignments": false,
+      "is_submittable": false,
+      "supports_submission_snapshot": true,
+      "supports_official_outputs": true,
+      "supports_evidence_pack": true,
+      "supports_signoff": false
     },
     "lifecycle": {
       "initial_state": "draft",
@@ -563,9 +829,27 @@
           "approve",
           "publish",
           "archive"
-        ]
+        ],
+        "scope": "system",
+        "ownership": "platform"
       }
     ],
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [
+        "System Manager"
+      ],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
     "transaction_behavior": {
       "is_transactional": false,
       "transaction_kind": null,
@@ -606,7 +890,46 @@
       "audit": {
         "track_state_history": true,
         "track_action_log": true,
-        "track_external_refs": true
+        "track_external_refs": true,
+        "require_reason_for_change": false,
+        "require_action_comment": false,
+        "hash_official_outputs": false
+      },
+      "records_management": {
+        "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+        "legal_hold_enabled": false,
+        "disposition_action": "archive",
+        "immutable_after_submit": true,
+        "official_copy_on_submit": false,
+        "chain_of_custody_required": false,
+        "retention_trigger_field": null,
+        "legal_hold_field": null
+      },
+      "evidence_policy": {
+        "required_attachments": [],
+        "required_references": [],
+        "required_approvals": [],
+        "verification_fields": []
+      },
+      "legal_hold_policy": {
+        "enabled": false,
+        "hold_field": null,
+        "restrict_disposition_while_active": true,
+        "allow_override_roles": []
+      },
+      "official_copy_policy": {
+        "enabled": true,
+        "format": "pdf",
+        "generate_on_submit": false,
+        "hash_outputs": false,
+        "include_audit_summary": true,
+        "include_attachments_index": true
+      },
+      "chain_of_custody_policy": {
+        "enabled": false,
+        "custody_event_field": null,
+        "require_transfer_reason": false,
+        "require_actor_identity": true
       }
     }
   },
@@ -621,7 +944,108 @@
         "modified"
       ],
       "default_filters": [],
-      "quick_entry": true
+      "quick_entry": true,
+      "form_layout": {
+        "version": 1,
+        "tabs": [
+          {
+            "id": "overview",
+            "label": "Overview",
+            "sections": [
+              {
+                "id": "identity",
+                "label": "Identity",
+                "columns": [
+                  {
+                    "id": "identity_column_1",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "title"
+                    ]
+                  },
+                  {
+                    "id": "identity_column_2",
+                    "label": "",
+                    "width": 6,
+                    "fieldIds": [
+                      "reference_no"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "status",
+                "label": "Workflow",
+                "columns": [
+                  {
+                    "id": "status_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "workflow_state"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "details",
+            "label": "Details",
+            "sections": [
+              {
+                "id": "content",
+                "label": "Details",
+                "columns": [
+                  {
+                    "id": "content_column_1",
+                    "label": "",
+                    "width": 4,
+                    "fieldIds": [
+                      "plan_code",
+                      "vision_summary",
+                      "active_version_state"
+                    ]
+                  },
+                  {
+                    "id": "content_column_2",
+                    "label": "",
+                    "width": 4,
+                    "fieldIds": [
+                      "planning_horizon",
+                      "strategic_themes"
+                    ]
+                  },
+                  {
+                    "id": "content_column_3",
+                    "label": "",
+                    "width": 4,
+                    "fieldIds": [
+                      "mission_summary",
+                      "approval_state"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "content_details",
+                "label": "Description",
+                "columns": [
+                  {
+                    "id": "content_details_column_1",
+                    "label": "",
+                    "width": 12,
+                    "fieldIds": [
+                      "description"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     },
     "related_docs": [
       {
@@ -691,7 +1115,11 @@
       "show_activity_log": true,
       "show_comments": true,
       "show_assignments": true,
-      "show_related_docs": true
+      "show_related_docs": true,
+      "show_kpis": true,
+      "show_summaries": true,
+      "show_charts": true,
+      "show_reports": true
     },
     "integration": {
       "external_refs": [],
@@ -701,7 +1129,21 @@
       "doc_key": "strategic_plan",
       "supports_related_lookup": true,
       "supports_fetch_rules": true,
-      "action_side_effects_file": "side_effects.json"
+      "action_side_effects_file": "side_effects.json",
+      "supports_official_copy": true,
+      "supports_evidence_timeline": true,
+      "supports_chain_of_custody": false
+    },
+    "dashboard": {
+      "metric_blocks": [
+        "kpis",
+        "summaries",
+        "charts",
+        "reports",
+        "records"
+      ],
+      "default_view": "list",
+      "reporting_surface": "doc"
     }
   },
   "classification": {
@@ -751,12 +1193,79 @@
       "audit": {
         "track_state_history": true,
         "track_action_log": true,
-        "track_external_refs": true
+        "track_external_refs": true,
+        "require_reason_for_change": false,
+        "require_action_comment": false,
+        "hash_official_outputs": false
+      },
+      "records_management": {
+        "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+        "legal_hold_enabled": false,
+        "disposition_action": "archive",
+        "immutable_after_submit": true,
+        "official_copy_on_submit": false,
+        "chain_of_custody_required": false,
+        "retention_trigger_field": null,
+        "legal_hold_field": null
+      },
+      "evidence_policy": {
+        "required_attachments": [],
+        "required_references": [],
+        "required_approvals": [],
+        "verification_fields": []
+      },
+      "legal_hold_policy": {
+        "enabled": false,
+        "hold_field": null,
+        "restrict_disposition_while_active": true,
+        "allow_override_roles": []
+      },
+      "official_copy_policy": {
+        "enabled": true,
+        "format": "pdf",
+        "generate_on_submit": false,
+        "hash_outputs": false,
+        "include_audit_summary": true,
+        "include_attachments_index": true
+      },
+      "chain_of_custody_policy": {
+        "enabled": false,
+        "custody_event_field": null,
+        "require_transfer_reason": false,
+        "require_actor_identity": true
       }
     },
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [
+        "System Manager"
+      ],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
+    "records_profile": {
+      "record_class": "business_record",
+      "legal_significance": "standard",
+      "confidentiality": "internal",
+      "official_copy_format": "pdf",
+      "evidence_gaps": []
+    },
     "report_boundary_classification": "configuration doc",
-    "validation_status": "ready",
-    "validation_warnings": []
+    "validation_status": "warning",
+    "validation_warnings": [
+      "helper_relation_field:related_planning_cycle",
+      "helper_relation_field:related_strategic_goal",
+      "helper_relation_field:related_initiative_portfolio",
+      "helper_relation_field:related_strategy_status_report"
+    ]
   },
   "business_logic": {
     "seeded": true,
@@ -803,6 +1312,14 @@
     "api_base_path": "/apis/strategic_management/strategic_planning/strategy_documents/strategic_plan/",
     "status_field": "workflow_state",
     "initial_state": "draft",
+    "actions": [
+      "create",
+      "update",
+      "review",
+      "approve",
+      "publish",
+      "archive"
+    ],
     "required_fields": [
       "title",
       "workflow_state"
@@ -833,7 +1350,83 @@
       "initiative_portfolio",
       "strategy_status_report"
     ],
+    "records_profile": {
+      "record_class": "business_record",
+      "legal_significance": "standard",
+      "confidentiality": "internal",
+      "official_copy_format": "pdf",
+      "evidence_gaps": []
+    },
+    "submission_snapshot_policy": {
+      "enabled": true,
+      "trigger_action": "submit",
+      "freeze_fields_after_snapshot": true,
+      "retain_snapshot_history": true,
+      "snapshot_label_template": "{reference_no}-{workflow_state}"
+    },
+    "signature_policy": {
+      "enabled": false,
+      "mode": "approval",
+      "required_roles": [
+        "System Manager"
+      ],
+      "reason_required": false,
+      "counter_signature_required": false
+    },
+    "records_management": {
+      "retention_policy_ref": "administration.office_administration.filing_records_management.retention_disposal.retention_policy",
+      "legal_hold_enabled": false,
+      "disposition_action": "archive",
+      "immutable_after_submit": true,
+      "official_copy_on_submit": false,
+      "chain_of_custody_required": false,
+      "retention_trigger_field": null,
+      "legal_hold_field": null
+    },
+    "legal_hold_policy": {
+      "enabled": false,
+      "hold_field": null,
+      "restrict_disposition_while_active": true,
+      "allow_override_roles": []
+    },
+    "official_copy_policy": {
+      "enabled": true,
+      "format": "pdf",
+      "generate_on_submit": false,
+      "hash_outputs": false,
+      "include_audit_summary": true,
+      "include_attachments_index": true
+    },
+    "evidence_policy": {
+      "required_attachments": [],
+      "required_references": [],
+      "required_approvals": [],
+      "verification_fields": []
+    },
+    "chain_of_custody_policy": {
+      "enabled": false,
+      "custody_event_field": null,
+      "require_transfer_reason": false,
+      "require_actor_identity": true
+    },
     "downstream_effects": [],
+    "role_action_matrix": [
+      {
+        "role_id": "System Manager",
+        "actions": [
+          "view",
+          "list",
+          "create",
+          "update",
+          "review",
+          "approve",
+          "publish",
+          "archive"
+        ],
+        "scope": "system",
+        "ownership": "platform"
+      }
+    ],
     "action_side_effects_file": "side_effects.json"
   },
   "runtime": {

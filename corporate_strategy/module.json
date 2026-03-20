@@ -4,5 +4,671 @@
   "app_id": "strategic_management",
   "type": "module",
   "status": "draft",
-  "supports_submodules": true
+  "supports_submodules": true,
+  "ui": {
+    "icon_key": "apps",
+    "accent": "#246f89",
+    "logo_image": null,
+    "cover_image": null
+  },
+  "dashboard": {
+    "version": 1,
+    "surface": "module",
+    "hero": {
+      "variant": "summary_strip",
+      "show_breadcrumb": true,
+      "show_title": true
+    },
+    "navigation": {
+      "primary_children": "docs",
+      "flatten_submodules_in_ui": true
+    },
+    "blocks": [
+      {
+        "id": "kpis",
+        "type": "kpi_cards",
+        "title": "Corporate Strategy KPIs",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "corporate_strategy",
+          "metric_family": "overview"
+        }
+      },
+      {
+        "id": "summaries",
+        "type": "summary_cards",
+        "title": "Corporate Strategy summaries",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "corporate_strategy",
+          "metric_family": "summary"
+        }
+      },
+      {
+        "id": "charts",
+        "type": "chart_group",
+        "title": "Corporate Strategy charts",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "corporate_strategy",
+          "metric_family": "trend"
+        },
+        "chart_specs": [
+          {
+            "id": "corporate_strategy_trend_line",
+            "label": "Corporate Strategy trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "corporate_strategy_volume_column",
+            "label": "Corporate Strategy volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "corporate_strategy_distribution_donut",
+            "label": "Corporate Strategy distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "growth_initiative_trend_line",
+            "label": "Growth Initiative trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "growth_initiative_volume_column",
+            "label": "Growth Initiative volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "growth_initiative_distribution_donut",
+            "label": "Growth Initiative distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "strategy_review_note_trend_line",
+            "label": "Strategy Review Note trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "strategy_review_note_volume_column",
+            "label": "Strategy Review Note volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "strategy_review_note_distribution_donut",
+            "label": "Strategy Review Note distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "corporate_strategy_record_trend_line",
+            "label": "Corporate Strategy Record trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "corporate_strategy_record_volume_column",
+            "label": "Corporate Strategy Record volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "corporate_strategy_record_distribution_donut",
+            "label": "Corporate Strategy Record distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          },
+          {
+            "id": "portfolio_decision_trend_line",
+            "label": "Portfolio Decision trend",
+            "chart_type": "line",
+            "series_role": "time_series",
+            "metric_family": "trend",
+            "x_field": "period",
+            "y_field": "value"
+          },
+          {
+            "id": "portfolio_decision_volume_column",
+            "label": "Portfolio Decision volume",
+            "chart_type": "column",
+            "series_role": "comparison",
+            "metric_family": "summary",
+            "x_field": "category",
+            "y_field": "count"
+          },
+          {
+            "id": "portfolio_decision_distribution_donut",
+            "label": "Portfolio Decision distribution",
+            "chart_type": "donut",
+            "series_role": "distribution",
+            "metric_family": "summary",
+            "segment_field": "category",
+            "value_field": "value"
+          }
+        ]
+      },
+      {
+        "id": "reports",
+        "type": "report_links",
+        "title": "Corporate Strategy reports",
+        "data_source": {
+          "kind": "db",
+          "entity_scope": "module",
+          "entity_id": "corporate_strategy",
+          "metric_family": "reporting"
+        }
+      }
+    ]
+  },
+  "reporting": {
+    "supports_kpis": true,
+    "supports_summaries": true,
+    "supports_charts": true,
+    "supports_reports": true,
+    "default_time_grain": "month",
+    "default_comparison": "previous_period",
+    "default_currency_mode": "base_currency",
+    "metric_sources": [
+      {
+        "id": "overview",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "corporate_strategy",
+        "metric_family": "overview"
+      },
+      {
+        "id": "summary",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "corporate_strategy",
+        "metric_family": "summary"
+      },
+      {
+        "id": "trend",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "corporate_strategy",
+        "metric_family": "trend"
+      },
+      {
+        "id": "reporting",
+        "kind": "db",
+        "entity_scope": "module",
+        "entity_id": "corporate_strategy",
+        "metric_family": "reporting"
+      }
+    ],
+    "report_registry": [
+      {
+        "id": "overview_report",
+        "label": "Corporate Strategy Overview",
+        "report_type": "dashboard_summary",
+        "surface": "module"
+      },
+      {
+        "id": "trend_report",
+        "label": "Corporate Strategy Trends",
+        "report_type": "trend_analysis",
+        "surface": "module"
+      },
+      {
+        "id": "summary_report",
+        "label": "Growth Initiative Summary",
+        "report_type": "summary_report",
+        "surface": "doc"
+      },
+      {
+        "id": "detail_report",
+        "label": "Growth Initiative Detail",
+        "report_type": "detail_report",
+        "surface": "doc"
+      }
+    ],
+    "chart_library": {
+      "renderer": "recharts",
+      "recommended_package": "recharts",
+      "source": "https://recharts.org/en-US"
+    },
+    "chart_registry": [
+      {
+        "id": "corporate_strategy_trend_line",
+        "label": "Corporate Strategy trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "corporate_strategy_volume_column",
+        "label": "Corporate Strategy volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "corporate_strategy_distribution_donut",
+        "label": "Corporate Strategy distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "growth_initiative_trend_line",
+        "label": "Growth Initiative trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "growth_initiative_volume_column",
+        "label": "Growth Initiative volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "growth_initiative_distribution_donut",
+        "label": "Growth Initiative distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "strategy_review_note_trend_line",
+        "label": "Strategy Review Note trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "strategy_review_note_volume_column",
+        "label": "Strategy Review Note volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "strategy_review_note_distribution_donut",
+        "label": "Strategy Review Note distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "corporate_strategy_record_trend_line",
+        "label": "Corporate Strategy Record trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "corporate_strategy_record_volume_column",
+        "label": "Corporate Strategy Record volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "corporate_strategy_record_distribution_donut",
+        "label": "Corporate Strategy Record distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      },
+      {
+        "id": "portfolio_decision_trend_line",
+        "label": "Portfolio Decision trend",
+        "chart_type": "line",
+        "series_role": "time_series",
+        "metric_family": "trend",
+        "x_field": "period",
+        "y_field": "value"
+      },
+      {
+        "id": "portfolio_decision_volume_column",
+        "label": "Portfolio Decision volume",
+        "chart_type": "column",
+        "series_role": "comparison",
+        "metric_family": "summary",
+        "x_field": "category",
+        "y_field": "count"
+      },
+      {
+        "id": "portfolio_decision_distribution_donut",
+        "label": "Portfolio Decision distribution",
+        "chart_type": "donut",
+        "series_role": "distribution",
+        "metric_family": "summary",
+        "segment_field": "category",
+        "value_field": "value"
+      }
+    ],
+    "source_docs": [],
+    "source_fields": [],
+    "child_sources": [
+      {
+        "id": "growth_initiative",
+        "title": "Growth Initiative",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "strategy_review_note",
+        "title": "Strategy Review Note",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "corporate_strategy_record",
+        "title": "Corporate Strategy Record",
+        "surface": null,
+        "source_docs": []
+      },
+      {
+        "id": "portfolio_decision",
+        "title": "Portfolio Decision",
+        "surface": null,
+        "source_docs": []
+      }
+    ]
+  },
+  "flow": {
+    "related_docs": [
+      "corporate_strategy_record",
+      "initiative_portfolio",
+      "execution_plan",
+      "growth_initiative",
+      "strategy_status_report",
+      "portfolio_decision",
+      "strategy_review_note"
+    ],
+    "upstream_docs": [
+      "corporate_strategy_record",
+      "initiative_portfolio",
+      "execution_plan",
+      "growth_initiative",
+      "strategy_status_report",
+      "portfolio_decision",
+      "strategy_review_note"
+    ],
+    "downstream_docs": [
+      "corporate_strategy_record"
+    ],
+    "actors": [],
+    "downstream_effects": [],
+    "emits_records": [
+      {
+        "action_id": "approve",
+        "target_doc": "corporate_strategy_record",
+        "effect_type": "create_record"
+      },
+      {
+        "action_id": "activate",
+        "target_doc": "corporate_strategy_record",
+        "effect_type": "create_record"
+      }
+    ],
+    "handoff_targets": [
+      "corporate_strategy_record",
+      "initiative_portfolio",
+      "execution_plan",
+      "growth_initiative",
+      "strategy_status_report",
+      "portfolio_decision",
+      "strategy_review_note"
+    ],
+    "graph_edges": [
+      {
+        "source_doc": "growth_initiative",
+        "target_doc": "corporate_strategy_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "growth_initiative",
+        "target_doc": "initiative_portfolio",
+        "relation": "references"
+      },
+      {
+        "source_doc": "growth_initiative",
+        "target_doc": "execution_plan",
+        "relation": "references"
+      },
+      {
+        "source_doc": "growth_initiative",
+        "target_doc": "corporate_strategy_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      },
+      {
+        "source_doc": "growth_initiative",
+        "target_doc": "corporate_strategy_record",
+        "relation": "create_record",
+        "action_id": "activate"
+      },
+      {
+        "source_doc": "strategy_review_note",
+        "target_doc": "corporate_strategy_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategy_review_note",
+        "target_doc": "growth_initiative",
+        "relation": "references"
+      },
+      {
+        "source_doc": "strategy_review_note",
+        "target_doc": "strategy_status_report",
+        "relation": "references"
+      },
+      {
+        "source_doc": "corporate_strategy_record",
+        "target_doc": "growth_initiative",
+        "relation": "references"
+      },
+      {
+        "source_doc": "corporate_strategy_record",
+        "target_doc": "portfolio_decision",
+        "relation": "references"
+      },
+      {
+        "source_doc": "corporate_strategy_record",
+        "target_doc": "strategy_review_note",
+        "relation": "references"
+      },
+      {
+        "source_doc": "portfolio_decision",
+        "target_doc": "corporate_strategy_record",
+        "relation": "references"
+      },
+      {
+        "source_doc": "portfolio_decision",
+        "target_doc": "growth_initiative",
+        "relation": "references"
+      },
+      {
+        "source_doc": "portfolio_decision",
+        "target_doc": "corporate_strategy_record",
+        "relation": "create_record",
+        "action_id": "approve"
+      }
+    ],
+    "operating_graph": {
+      "nodes": [
+        {
+          "id": "corporate_strategy_record",
+          "kind": "doc"
+        },
+        {
+          "id": "initiative_portfolio",
+          "kind": "doc"
+        },
+        {
+          "id": "execution_plan",
+          "kind": "doc"
+        },
+        {
+          "id": "growth_initiative",
+          "kind": "doc"
+        },
+        {
+          "id": "strategy_status_report",
+          "kind": "doc"
+        },
+        {
+          "id": "portfolio_decision",
+          "kind": "doc"
+        },
+        {
+          "id": "strategy_review_note",
+          "kind": "doc"
+        }
+      ],
+      "edges": [
+        {
+          "source_doc": "growth_initiative",
+          "target_doc": "corporate_strategy_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "growth_initiative",
+          "target_doc": "initiative_portfolio",
+          "relation": "references"
+        },
+        {
+          "source_doc": "growth_initiative",
+          "target_doc": "execution_plan",
+          "relation": "references"
+        },
+        {
+          "source_doc": "growth_initiative",
+          "target_doc": "corporate_strategy_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        },
+        {
+          "source_doc": "growth_initiative",
+          "target_doc": "corporate_strategy_record",
+          "relation": "create_record",
+          "action_id": "activate"
+        },
+        {
+          "source_doc": "strategy_review_note",
+          "target_doc": "corporate_strategy_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategy_review_note",
+          "target_doc": "growth_initiative",
+          "relation": "references"
+        },
+        {
+          "source_doc": "strategy_review_note",
+          "target_doc": "strategy_status_report",
+          "relation": "references"
+        },
+        {
+          "source_doc": "corporate_strategy_record",
+          "target_doc": "growth_initiative",
+          "relation": "references"
+        },
+        {
+          "source_doc": "corporate_strategy_record",
+          "target_doc": "portfolio_decision",
+          "relation": "references"
+        },
+        {
+          "source_doc": "corporate_strategy_record",
+          "target_doc": "strategy_review_note",
+          "relation": "references"
+        },
+        {
+          "source_doc": "portfolio_decision",
+          "target_doc": "corporate_strategy_record",
+          "relation": "references"
+        },
+        {
+          "source_doc": "portfolio_decision",
+          "target_doc": "growth_initiative",
+          "relation": "references"
+        },
+        {
+          "source_doc": "portfolio_decision",
+          "target_doc": "corporate_strategy_record",
+          "relation": "create_record",
+          "action_id": "approve"
+        }
+      ]
+    }
+  },
+  "contract_version": 1
 }
