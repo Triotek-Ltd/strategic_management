@@ -272,4 +272,12 @@
   },
   "workflow_hints": {},
   "downstream_effects": [],
-  "
+  "action_side_effects_file": null,
+  "related_docs": [
+    "strategic_plan",
+    "strategic_goal"
+  ],
+  "borrowed_fields": [
+    "strategic horizon defaults from strategic_plan"
+  ]
+}

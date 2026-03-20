@@ -811,7 +811,7 @@
       "supports_submission_snapshot": true,
       "supports_official_outputs": true,
       "supports_evidence_pack": true,
-      "supports_signoff": false
+      "supports_signoff": true
     },
     "lifecycle": {
       "initial_state": "proposed",
@@ -909,7 +909,7 @@
       "snapshot_label_template": "{reference_no}-{workflow_state}"
     },
     "signature_policy": {
-      "enabled": false,
+      "enabled": true,
       "mode": "approval",
       "required_roles": [
         "System Manager"
@@ -1350,7 +1350,7 @@
       "snapshot_label_template": "{reference_no}-{workflow_state}"
     },
     "signature_policy": {
-      "enabled": false,
+      "enabled": true,
       "mode": "approval",
       "required_roles": [
         "System Manager"
@@ -1481,7 +1481,7 @@
       "snapshot_label_template": "{reference_no}-{workflow_state}"
     },
     "signature_policy": {
-      "enabled": false,
+      "enabled": true,
       "mode": "approval",
       "required_roles": [
         "System Manager"

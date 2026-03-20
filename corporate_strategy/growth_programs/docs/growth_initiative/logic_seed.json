@@ -115,7 +115,7 @@
       "supports_submission_snapshot": true,
       "supports_official_outputs": true,
       "supports_evidence_pack": true,
-      "supports_signoff": false
+      "supports_signoff": true
     },
     "submission_snapshot_policy": {
       "enabled": true,
@@ -128,9 +128,11 @@
       ]
     },
     "signature_policy": {
-      "enabled": false,
+      "enabled": true,
       "mode": "approval",
-      "required_roles": [],
+      "required_roles": [
+        "System Manager"
+      ],
       "reason_required": false,
       "counter_signature_required": false
     },
@@ -208,7 +210,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       },
       "assign": {
         "rule": {
@@ -226,7 +229,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       },
       "approve": {
         "rule": {
@@ -244,7 +248,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": true
       },
       "activate": {
         "rule": {
@@ -258,7 +263,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       },
       "close": {
         "rule": {
@@ -276,7 +282,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       },
       "stop": {
         "rule": {
@@ -294,7 +301,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       },
       "archive": {
         "rule": {
@@ -312,7 +320,8 @@
         "requires_evidence": false,
         "is_disposition_action": true,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       }
     },
     "action_targets": {

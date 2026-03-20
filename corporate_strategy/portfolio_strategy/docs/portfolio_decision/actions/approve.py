@@ -12,7 +12,7 @@ ACTION_RULE: dict[str, Any] = {'allowed_in_states': ['proposed', 'reviewed', 'ap
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {}
 
-ACTION_CONTRACT: dict[str, Any] = {'rule': {'allowed_in_states': ['proposed', 'reviewed', 'approved', 'rejected'], 'transitions_to': 'approved'}, 'requires_action_comment': False, 'requires_reason_for_change': False, 'requires_evidence': False, 'is_disposition_action': False, 'creates_submission_snapshot': False, 'creates_official_copy': False, 'requires_signature': False}
+ACTION_CONTRACT: dict[str, Any] = {'rule': {'allowed_in_states': ['proposed', 'reviewed', 'approved', 'rejected'], 'transitions_to': 'approved'}, 'requires_action_comment': False, 'requires_reason_for_change': False, 'requires_evidence': False, 'is_disposition_action': False, 'creates_submission_snapshot': False, 'creates_official_copy': False, 'requires_signature': True}
 
 def handle_approve(payload: dict, context: dict | None = None) -> dict:
     context = context or {}
@@ -27,4 +27,5 @@ def handle_approve(payload: dict, context: dict | None = None) -> dict:
         "next_state": next_state,
         "updates": updates,
         "action_contract": ACTION_CONTRACT,
-        "workflow_objective": WORKFLOW_HINTS.get("b
+        "workflow_objective": WORKFLOW_HINTS.get("business_objective"),
+    }

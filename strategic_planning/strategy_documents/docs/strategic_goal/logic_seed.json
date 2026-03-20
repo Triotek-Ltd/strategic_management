@@ -336,4 +336,16 @@
     }
   },
   "workflow_hints": {},
-  "dow
+  "downstream_effects": [],
+  "action_side_effects_file": null,
+  "related_docs": [
+    "strategic_plan",
+    "planning_cycle",
+    "initiative_portfolio",
+    "execution_plan"
+  ],
+  "borrowed_fields": [
+    "plan title",
+    "theme from strategic_plan"
+  ]
+}

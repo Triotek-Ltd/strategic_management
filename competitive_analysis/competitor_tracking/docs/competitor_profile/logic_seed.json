@@ -182,7 +182,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       },
       "update": {
         "rule": {
@@ -196,7 +197,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       },
       "review": {
         "rule": {
@@ -210,7 +212,8 @@
         "requires_evidence": false,
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       },
       "archive": {
         "rule": {
@@ -224,7 +227,8 @@
         "requires_evidence": false,
         "is_disposition_action": true,
         "creates_submission_snapshot": false,
-        "creates_official_copy": false
+        "creates_official_copy": false,
+        "requires_signature": false
       }
     },
     "action_targets": {

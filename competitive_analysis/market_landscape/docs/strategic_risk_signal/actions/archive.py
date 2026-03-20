@@ -12,7 +12,7 @@ ACTION_RULE: dict[str, Any] = {'allowed_in_states': ['raised', 'reviewed', 'miti
 STATE_FIELD = 'workflow_state'
 WORKFLOW_HINTS = {'relation_context': {'related_docs': ['market_analysis', 'competitive_observation', 'execution_issue_case'], 'borrowed_fields': ['source context from market_analysis or competitive_observation'], 'inferred_roles': ['case owner']}, 'actors': ['case owner'], 'action_actors': {'create': ['case owner'], 'assign': ['case owner'], 'review': ['case owner'], 'close': ['case owner'], 'archive': ['case owner']}}
 
-ACTION_CONTRACT: dict[str, Any] = {'rule': {'allowed_in_states': ['raised', 'reviewed', 'mitigating', 'escalated'], 'transitions_to': 'archived'}, 'requires_action_comment': False, 'requires_reason_for_change': False, 'requires_evidence': False, 'is_disposition_action': True, 'creates_submission_snapshot': False, 'creates_official_copy': False}
+ACTION_CONTRACT: dict[str, Any] = {'rule': {'allowed_in_states': ['raised', 'reviewed', 'mitigating', 'escalated'], 'transitions_to': 'archived'}, 'requires_action_comment': False, 'requires_reason_for_change': False, 'requires_evidence': False, 'is_disposition_action': True, 'creates_submission_snapshot': False, 'creates_official_copy': False, 'requires_signature': False}
 
 def handle_archive(payload: dict, context: dict | None = None) -> dict:
     context = context or {}

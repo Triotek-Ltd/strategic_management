@@ -377,4 +377,14 @@
       ]
     }
   },
- 
+  "downstream_effects": [],
+  "action_side_effects_file": null,
+  "related_docs": [
+    "execution_plan",
+    "execution_issue_case"
+  ],
+  "borrowed_fields": [
+    "plan owner",
+    "timeline from execution_plan"
+  ]
+}

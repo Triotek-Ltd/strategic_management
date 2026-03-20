@@ -322,4 +322,11 @@
   "downstream_effects": [],
   "action_side_effects_file": null,
   "related_docs": [
-    "execution_p
+    "execution_plan",
+    "execution_milestone",
+    "execution_issue_case"
+  ],
+  "borrowed_fields": [
+    "plan or strategy identity from linked records"
+  ]
+}

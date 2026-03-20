@@ -27,4 +27,5 @@ def handle_track(payload: dict, context: dict | None = None) -> dict:
         "next_state": next_state,
         "updates": updates,
         "action_contract": ACTION_CONTRACT,
-        "workflow_objective": WORKFLOW_HINTS.get("b
+        "workflow_objective": WORKFLOW_HINTS.get("business_objective"),
+    }

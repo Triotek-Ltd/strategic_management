@@ -119,7 +119,7 @@
       "supports_submission_snapshot": true,
       "supports_official_outputs": true,
       "supports_evidence_pack": true,
-      "supports_signoff": false
+      "supports_signoff": true
     },
     "submission_snapshot_policy": {
       "enabled": true,
@@ -132,7 +132,7 @@
       ]
     },
     "signature_policy": {
-      "enabled": false,
+      "enabled": true,
       "mode": "approval",
       "required_roles": [
         "System Manager"
@@ -250,7 +250,7 @@
         "is_disposition_action": false,
         "creates_submission_snapshot": false,
         "creates_official_copy": false,
-        "requires_signature": false
+        "requires_signature": true
       },
       "rebalance": {
         "rule": {
@@ -317,4 +317,15 @@
     }
   },
   "workflow_hints": {},
-  "
+  "downstream_effects": [],
+  "action_side_effects_file": null,
+  "related_docs": [
+    "strategic_plan",
+    "strategic_goal",
+    "growth_initiative",
+    "execution_plan"
+  ],
+  "borrowed_fields": [
+    "strategic priorities from strategic_plan"
+  ]
+}

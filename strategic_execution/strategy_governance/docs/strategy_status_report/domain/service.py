@@ -200,4 +200,39 @@ class DomainService:
             request = (context or {}).get("request") if context else None
             user = getattr(request, "user", None) if request is not None else None
             signer = payload.get("signature_name") or getattr(user, "username", None)
-      
+            side_effects.append(
+                {
+                    "kind": "approval_signature",
+                    "action_id": action_id,
+                    "signature_name": signer,
+                    "required_roles": self.signature_policy().get("required_roles", []),
+                    "reason_required": self.signature_policy().get("reason_required"),
+                }
+            )
+        return {
+            "updates": {},
+            "side_effects": side_effects,
+        }
+
+    def shape_retrieve_data(self, instance, serialized_data: dict, context: dict | None = None) -> dict:
+        serialized_data.setdefault("_business_capabilities", self.business_capabilities())
+        return serialized_data
+
+    def workflow_objective(self) -> str | None:
+        return WORKFLOW_HINTS.get("business_objective")
+
+    def side_effect_hints(self) -> dict:
+        return SIDE_EFFECT_HINTS
+
+    def business_capabilities(self) -> dict:
+        return {
+            **ARCHETYPE_PROFILE,
+            "required_fields": self.required_fields(),
+            "state_field": self.state_field(),
+            "default_state": self.default_state(),
+            "is_submittable": bool(self.record_contract().get("is_submittable")),
+            "supports_submission_snapshot": bool(self.record_contract().get("supports_submission_snapshot")),
+            "supports_official_outputs": bool(self.record_contract().get("supports_official_outputs")),
+            "supports_evidence_pack": bool(self.record_contract().get("supports_evidence_pack")),
+            "supports_signoff": bool(self.record_contract().get("supports_signoff")),
+        }
